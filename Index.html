@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anmol Kumar — Web Designer</title>
+  <meta name="description"
+    content="Professional Web Designer portfolio showcasing UX/UI, responsive websites, and brand-focused web experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #10162a;
+      --muted: #a9b3c9;
+      --text: #e7ecf6;
+      --brand: #6ee7f9;
+      --accent: #a78bfa;
+      --ring: rgba(110, 231, 249, .35);
+      --ok: #34d399;
+      --warn: #f59e0b;
+      --err: #ef4444;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    [data-theme="light"] {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #0c1222;
+      --muted: #5a667e;
+      --ring: rgba(99, 102, 241, .25);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(167, 139, 250, .18), transparent 60%),
+        radial-gradient(700px 500px at 10% 10%, rgba(110, 231, 249, .18), transparent 60%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    /* Layout */
+    .container {
+      width: min(1100px, 92vw);
+      margin-inline: auto
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text)
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      box-shadow: var(--shadow)
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin: 0;
+      letter-spacing: .4px
+    }
+
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      padding: 0;
+      margin: 0
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: 10px
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(110, 231, 249, .18), rgba(167, 139, 250, .18));
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .12)
+    }
+
+    .btn:hover {
+      transform: translateY(-1px)
+    }
+
+    .ghost {
+      background: transparent
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: var(--panel);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 56px 0 26px
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .4px;
+      color: var(--text);
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12)
+    }
+
+    .title {
+      font-size: 44px;
+      margin: 14px 0 10px;
+      line-height: 1.12
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 22px
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow)
+    }
+
+    .portrait {
+      aspect-ratio: 1/1;
+      width: 100%;
+      border-radius: 18px;      
+      background:
+        radial-gradient(250px 250px at 70% 20%, rgba(110, 231, 249, .25), transparent 60%),
+        radial-gradient(250px 250px at 20% 70%, rgba(167, 139, 250, .25), transparent 60%),
+        linear-gradient(135deg, #0e1429, #0b1020);
+      border: 1px solid rgba(255, 255, 255, .1)
+    }
+    img {
+      flex-wrap: nowrap;
+      font: cover ;
+      border-radius: 18px;
+      object-fit: contain;
+      margin-left: 20px;
+      margin-top: 0;
+      width: 100%;
+      height: 100%;
+      display: block;          
+    } 
+
+    /* Sections */
+    section {
+      padding: 54px 0
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin: 0 0 12px
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 24px
+    }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center
+    }
+
+    .stat h3 {
+      margin: 0;
+      font-size: 28px
+    }
+
+    .stat p {
+      margin: 6px 0 0;
+      color: var(--muted)
+    }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px
+    }
+
+    .skill {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 14px;
+      padding: 16px
+    }
+
+    .skill h4 {
+      margin: 0 0 8px
+    }
+
+    .bar {
+      height: 10px;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 999px;
+      overflow: hidden
+    }
+
+    .bar>span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), var(--accent))
+    }
+
+    /* Services */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 16px;
+      padding: 18px
+    }
+
+    .card h4 {
+      margin: 0 0 8px
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted)
+    }
+
+    /* Portfolio */
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer
+    }
+
+    .chip.active {
+      background: rgba(255, 255, 255, .08)
+    }
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .work {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #1b213a, #12182c);
+      border: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .work .thumb {
+      aspect-ratio: 16/10;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      letter-spacing: .8px;
+      color: rgba(255, 255, 255, .9)
+    }
+
+    .work .meta {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .tag {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .work:hover {
+      transform: translateY(-2px)
+    }
+
+    /* Contact */
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    form .full {
+      grid-column: 1/-1
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: var(--panel);
+      color: var(--text)
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    /* Utilities */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 28px
+      }
+
+      .about {
+        grid-template-columns: 1fr
+      }
+
+      .skills {
+        grid-template-columns: 1fr
+      }
+
+      .grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .portfolio {
+        grid-template-columns: 1fr 1fr
+      }
+
+      form {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav ul {
+        display: none
+      }
+
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .portfolio {
+        grid-template-columns: 1fr
+      }
+
+      .title {
+        font-size: 36px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="Go to top">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Anmol Kumar Tiwari <span class="sr-only">—</span> <span style="opacity:.7; font-weight:500">Web
+            Designer</span></h1>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#Download" class="nav-link">Download</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌗</button>
+        <a class="btn" href="#contact">Contact Us</a>
+        <button id="menuBtn" class="btn ghost" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+      </div>
+    </div>
+    <div class="container" id="mobileNav" hidden>
+      <nav aria-label="Mobile">
+        <ul style="display:grid; gap:8px; padding:10px 0;">
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="container">
+    <section class="hero">
+      <div>
+        <span class="pill">Available for freelance</span>
+        <h2 class="title">I design delightful, conversion‑focused websites.</h2>
+        <p class="subtitle">Web Designer & UI/UX Specialist helping brands turn ideas into beautiful, accessible, and
+          responsive web experiences.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#work">View Portfolio</a>
+          <a class="btn ghost" href="#contact">Request a Quote</a>
+          <a class="btn ghost" download href="#" id="downloadCV">Download Résumé</a>
+        </div>
+        <div style="display:flex; gap:14px; margin-top:18px; flex-wrap:wrap">
+          <div class="stat" style="min-width:140px">
+            <h3>3+ yrs</h3>
+            <p>Experience</p>
+          </div>
+          <div class="stat" style="min-width:140px">
+            <h3>90+</h3>
+            <p>Projects shipped</p>
+          </div>
+          <div class="stat" style="min-width:140px">
+            <h3>98%</h3>
+            <p>Client satisfaction</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="portrait" role="img" aria-label="Abstract portrait placeholder"> <img src="Photo.png" alt="Photo" height="415"> </div>
+        <div class="hint" style="margin-top:10px"> </div>
+      </div>
+    </section>
+
+    <!-- Work / Portfolio -->
+    <section id="work" aria-labelledby="work-title">
+      <h3 class="section-title" id="work-title">Selected Work</h3>
+      <p class="section-desc">A few recent projects. Filter by type.</p>
+      <div class="filters" role="tablist" aria-label="Portfolio filters">
+        <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="chip" data-filter="landing" role="tab">Landing Pages</button>
+        <button class="chip" data-filter="ecommerce" role="tab">E‑commerce</button>
+        <button class="chip" data-filter="dashboard" role="tab">Dashboards</button>
+      </div>
+      <div class="portfolio" id="portfolio">
+        <!-- Portfolio items: use data-tags for filtering -->
+        <article class="work" data-tags="landing">
+          <div class="thumb">SaaS Landing</div>
+          <div class="meta">
+            <strong>BrightCRM</strong>
+            <span class="tag">Landing</span>
+          </div>
+        </article>
+        <article class="work" data-tags="ecommerce">
+          <div class="thumb">E‑commerce</div>
+          <div class="meta">
+            <strong>Natura Shop</strong>
+            <span class="tag">E‑commerce</span>
+          </div>
+        </article>
+        <article class="work" data-tags="dashboard">
+          <div class="thumb">Admin UI</div>
+          <div class="meta">
+            <strong>FleetBoard</strong>
+            <span class="tag">Dashboard</span>
+          </div>
+        </article>
+        <article class="work" data-tags="landing">
+          <div class="thumb">Campaign</div>
+          <div class="meta">
+            <strong>Echo Studio</strong>
+            <span class="tag">Landing</span>
+          </div>
+        </article>
+        <article class="work" data-tags="ecommerce">
+          <div class="thumb">Storefront</div>
+          <div class="meta">
+            <strong>Urban Fits</strong>
+            <span class="tag">E‑commerce</span>
+          </div>
+        </article>
+        <article class="work" data-tags="dashboard">
+          <div class="thumb">Analytics</div>
+          <div class="meta">
+            <strong>InsightX</strong>
+            <span class="tag">Dashboard</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-title">
+      <h3 class="section-title" id="services-title">Services</h3>
+      <p class="section-desc">From idea to polished product. Fixed‑price packages available.</p>
+      <div class="grid">
+        <div class="card">
+          <h4>UI/UX Design</h4>
+          <p>Wireframes, user flows, prototypes, and high‑fidelity UI built with accessibility at the core.</p>
+        </div>
+        <div class="card">
+          <h4>Website Design</h4>
+          <p>Marketing sites, landing pages, and brand systems that look great on any device.</p>
+        </div>
+        <div class="card">
+          <h4>Webflow / No‑Code</h4>
+          <p>Production‑ready sites delivered fast using Webflow or Framer, with custom interactions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Skills -->
+    <section id="about" aria-labelledby="about-title">
+      <h3 class="section-title" id="about-title">About</h3>
+      <p class="section-desc">Designer obsessed with clarity, polish, and performance.</p>
+      <div class="about">
+        <div>
+          <p>I'm a web designer with 7+ years of experience crafting conversion‑focused, accessible websites for
+            startups and established brands. I collaborate closely with founders and dev teams to turn business goals
+            into intuitive, delightful interfaces.</p>
+          <p>Tools I love: Figma, Webflow, Framer, Illustrator, HTML/CSS, a sprinkle of JS when needed.</p>
+        </div>
+        <div>
+          <div class="skills">
+            <div class="skill">
+              <h4>UI/UX</h4>
+              <div class="bar" aria-label="UI/UX 95%"><span style="width:95%"></span></div>
+            </div>
+            <div class="skill">
+              <h4>Responsive Design</h4>
+              <div class="bar" aria-label="Responsive 92%"><span style="width:92%"></span></div>
+            </div>
+            <div class="skill">
+              <h4>Branding</h4>
+              <div class="bar" aria-label="Branding 85%"><span style="width:85%"></span></div>
+            </div>
+            <div class="skill">
+              <h4>HTML/CSS</h4>
+              <div class="bar" aria-label="Code 88%"><span style="width:88%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h3 class="section-title" id="contact-title">Let's build something great</h3>
+      <p class="section-desc">Send a quick brief and I’ll reply within one business day.</p>
+      <form id="contactForm" novalidate>
+        <div>
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div>
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="full">
+          <label class="sr-only" for="budget">Budget</label>
+          <input id="budget" name="budget" placeholder="Approx. budget (USD)" />
+        </div>
+        <div class="full">
+          <label class="sr-only" for="message">Project details</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project" required></textarea>
+        </div>
+        <div class="full" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+          <button class="btn" type="submit">Send Inquiry</button>
+          <span class="hint" id="formHint" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px">
+      <span>© <span id="year"></span> Anmol. All rights reserved.</span>
+      <span>Based in Remote · Available worldwide</span>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Utilities =====
+    const $ = (s, root = document) => root.querySelector(s);
+    const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = $('#menuBtn');
+    const mobileNav = $('#mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.hasAttribute('hidden') === false;
+      if (open) { mobileNav.setAttribute('hidden', ''); menuBtn.setAttribute('aria-expanded', 'false'); }
+      else { mobileNav.removeAttribute('hidden'); menuBtn.setAttribute('aria-expanded', 'true'); }
+    });
+
+    // Smooth scroll & active link
+    $$('.nav-link').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+          mobileNav.setAttribute('hidden', '');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+    const sections = ['#work', '#services', '#about', '#contact'].map(id => $(id));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = '#' + entry.target.id;
+        const link = document.querySelector(`a[href="${id}"]`);
+        if (entry.isIntersecting) {
+          $$('.nav a').forEach(a => a.classList.remove('active'));
+          if (link) link.classList.add('active');
+        }
+      })
+    }, { root: null, rootMargin: '-60% 0px -35% 0px', threshold: 0 });
+    sections.forEach(s => observer.observe(s));
+
+    // Theme toggle (persist in localStorage)
+    const rootEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) { rootEl.setAttribute('data-theme', savedTheme); }
+    $('#themeToggle').addEventListener('click', () => {
+      const now = rootEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      rootEl.setAttribute('data-theme', now);
+      localStorage.setItem('theme', now);
+    });
+
+    // Portfolio filtering
+    const chips = $$('.chip');
+    const works = $$('.work');
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const tag = chip.dataset.filter;
+        works.forEach(w => {
+          const has = w.dataset.tags.includes(tag);
+          w.style.display = (tag === 'all' || has) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Contact form validation (demo)
+    const form = $('#contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formHint = $('#formHint');
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (!data.name || !data.email || !data.message) {
+        formHint.textContent = 'Please complete the required fields.';
+        formHint.style.color = getComputedStyle(document.documentElement).getPropertyValue('--warn');
+        return;
+      }
+      formHint.textContent = 'Thanks! Your message has been queued (demo).';
+      formHint.style.color = getComputedStyle(document.documentElement).getPropertyValue('--ok');
+      form.reset();
+    });
+
+    // Download resume (generates a simple text file as placeholder)
+    const cvBtn = $('#downloadCV');
+    cvBtn.addEventListener('click', (e) => {
+      const blob = new Blob([
+        'Alex Parker — Web Designer\n',
+        'Email: alex@example.com\n',
+        'Skills: UI/UX, Web Design, Webflow, Figma, HTML/CSS, Basic JS\n',
+        'Experience: 7+ years designing for SaaS, e‑commerce, and startups.'
+      ], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      cvBtn.href = url;
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    });
+  </script>
+</body>
+
+</html>
